@@ -43,7 +43,18 @@ namespace Client
 
         public string ReadFile(string filename)
         {
-            throw new NotImplementedException();
+            string contents = " ";
+            try
+            {
+                contents = factory.ReadFile(filename);
+                return contents;
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return contents;
         }
 
         public bool RenameFileOrFolder(string oldName, string newName, bool isFile)
@@ -53,7 +64,18 @@ namespace Client
 
         public string ShowFolder(string filename)
         {
-            throw new NotImplementedException();
+            string result = "";
+            try
+            {
+                result = factory.ShowFolder(filename);
+
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
         }
     }
 }

@@ -40,7 +40,17 @@ namespace Client
 
                     proxy.Credentials.ClientCertificate.Certificate = CertificateManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, cltCertCN);
                     proxy.factory = proxy.CreateChannel();
-                   
+
+                    bool res = true;
+
+                    MenuHandler menuHandler = new MenuHandler();
+                    while (res)
+                    {
+                        menuHandler.InitializeMenu();
+                        res = menuHandler.ReceiveInput(proxy);
+
+                    }
+
                 }
                 catch (Exception e)
                 {
