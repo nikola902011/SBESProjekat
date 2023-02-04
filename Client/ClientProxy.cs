@@ -23,22 +23,62 @@ namespace Client
 
         public bool CreateFile(string filename, string fileContent)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            try
+            {
+                result = factory.CreateFile(filename, fileContent);
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
         }
 
         public bool CreateFolder(string folderName)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            try
+            {
+                result = factory.CreateFolder(folderName);
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return result;
         }
 
         public bool DeleteFile(string filename, bool isFile)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            try
+            {
+                result = factory.DeleteFile(filename, isFile);
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
         }
 
         public bool MoveFile(string filename, string pathToFolder, bool isFile)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            try
+            {
+                result = factory.MoveFile(filename, pathToFolder, isFile);
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+            return result;
         }
 
         public string ReadFile(string filename)
@@ -59,7 +99,18 @@ namespace Client
 
         public bool RenameFileOrFolder(string oldName, string newName, bool isFile)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            try
+            {
+                result = factory.RenameFileOrFolder(oldName, newName, isFile);
+            }
+            catch (FaultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+            return result;
         }
 
         public string ShowFolder(string filename)

@@ -31,6 +31,13 @@ namespace Server
 
             host.AddServiceEndpoint(typeof(IFileSystemManager), binding, address);
 
+            ServiceSecurityAuditBehavior audit = new ServiceSecurityAuditBehavior();
+
+            audit.AuditLogLocation = AuditLogLocation.Application;
+            audit.ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure;
+            host.Description.Behaviors.Remove<ServiceSecurityAuditBehavior>();
+            host.Description.Behaviors.Add(audit);
+
             host.Authorization.PrincipalPermissionMode = PrincipalPermissionMode.Custom;
 
             host.Authorization.ServiceAuthorizationManager = new CustomServiceAuthorizationManager();
