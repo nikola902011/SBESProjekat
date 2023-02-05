@@ -50,7 +50,7 @@ namespace Server
                 }
                 using (StreamWriter sw = File.CreateText(pathString))
                 {
-                    sw.WriteLine(fileContent);
+                    sw.WriteLine(EncryptionManager.DecryptMessage(fileContent));
 
                 }
                 try
@@ -252,7 +252,7 @@ namespace Server
                     builder.Append(Environment.NewLine);
                 }
 
-                return builder.ToString();
+                return EncryptionManager.EncryptMessage(builder.ToString());
             }
             else
             {

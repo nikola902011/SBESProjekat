@@ -90,7 +90,5 @@ namespace SecurityManager
                 customLog = null;
             }
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Common;
+using SecurityManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace Client
             bool result = false;
             try
             {
-                result = factory.CreateFile(filename, fileContent);
+                result = factory.CreateFile(filename, EncryptionManager.EncryptMessage(fileContent));
             }
             catch (FaultException e)
             {
@@ -87,7 +88,7 @@ namespace Client
             try
             {
                 contents = factory.ReadFile(filename);
-                return contents;
+                return EncryptionManager.DecryptMessage(contents);
             }
             catch (FaultException e)
             {
