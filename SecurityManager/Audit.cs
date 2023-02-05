@@ -10,7 +10,7 @@ namespace SecurityManager
     public  class Audit : IDisposable
     {
         private static EventLog customLog = null;
-        const string SourceName = "FileManager.Audit";
+        const string SourceName = "SecurityManager.Audit";
         const string LogName = "MySecTest";
 
         static Audit()
